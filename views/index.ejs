@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>댓글 목록</h1>
+    <ul>
+        <% for (comment of comments) { %>
+            <li><%= comment.content %></li>
+            <form action="/update/<%=comment.id%>" method="post">
+            <!-- action = 향하는 곳, method = 보내는 방식 -->
+                <input type="text" id="lname" name="content">
+                <input type="submit" value="수정">
+            </form>
+            <form action="/delete/<%=comment.id%>" method="post">
+            <!-- action = 향하는 곳, method = 보내는 방식 -->
+                <input type="submit" value="삭제">
+            </form>
+        <%} %>
+    </ul>
+    <hr>
+    <form action="/create" method="post">
+        <!-- action = 향하는 곳, method = 보내는 방식 -->
+        <input type="text" id="lname" name="content"><br><br>
+        <input type="submit" value="댓글달기">
+    </form>
+</body>
+</html>
